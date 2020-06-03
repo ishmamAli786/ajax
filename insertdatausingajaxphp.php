@@ -23,6 +23,19 @@
 <input type="submit" name="submit" value="submit" id="submit "class="btn btn-success">
 </form>
 </div>
+<div>
+<h1 class="text-center text-success" >Display Data using ajax in php and mysqli</h1><br>
+<button id="displaydata" class="btn btn-danger">Display</button>
+<table class="table table-striped table-bordered text-center">
+<thead>
+<th>Id</th>
+<th>Name</th>
+<th>Password</th>
+</thead>
+<tbody id="response">
+</tbody>
+</table>
+</div>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -34,6 +47,19 @@ $(document).ready(function(){
             data:$("#myform input").serialize(),
             success: function(data){
                 console.log(data);
+            }
+        });
+    });
+});
+</script>
+<script>
+$(document).ready(function(){
+    $('#displaydata').click(function(){
+        $.ajax({
+            url:'displaydatausingajaxphp.php',
+            type:'post',
+            success:function(responsedata){
+                $('#response').html(responsedata);
             }
         });
     });
